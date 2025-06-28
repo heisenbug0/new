@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/image";
+import { useEffect } from "react";
 
 type NetworkCardsProps = {
   openLogin: (networkName: string) => void;
@@ -26,22 +26,29 @@ const networks = [
 ];
 
 export default function NetworkCards({ openLogin, cardBg }: NetworkCardsProps) {
+  useEffect(() => {
+    // Initialize AOS when component mounts
+    if (typeof window !== "undefined" && (window as any).AOS) {
+      (window as any).AOS.refresh();
+    }
+  }, []);
+
   return (
     <section className="networkContainer flx fdc aic jcc" aria-label="Wallet Networks">
-      <ul className="networkCardList" style={{ listStyle: 'none', padding: 0, margin: 0, width: '100%' }}>
-        {networks.map((net) => (
-          <li key={net.name} style={{ marginBottom: '1rem' }}>
+      <ul className="networkCardList">
+        {networks.map((net, index) => (
+          <li key={net.name}>
             <button
               className="NetworkCard flx aic"
               value={net.name}
               data-aos="fade-up"
+              data-aos-delay={index * 50}
               onClick={() => openLogin(net.name)}
               aria-label={`Login with ${net.name}`}
-              style={{ width: '100%', background: cardBg || undefined, color: cardBg ? '#222' : undefined, boxShadow: cardBg ? '0 2px 8px rgba(0,0,0,0.08)' : undefined }}
             >
               <span className="flx aic jcc">
-                <img src={`/images/${net.img}`} alt={net.name} height={32} style={{ marginRight: 12 }} />
-                <h5 style={{ margin: 0 }}>{net.name}</h5>
+                <img src={`/images/${net.img}`} alt={net.name} />
+                <h5>{net.name}</h5>
               </span>
             </button>
           </li>
@@ -49,4 +56,4 @@ export default function NetworkCards({ openLogin, cardBg }: NetworkCardsProps) {
       </ul>
     </section>
   );
-} 
+}

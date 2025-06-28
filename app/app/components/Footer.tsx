@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <footer id="footer-section" className="footer-section" aria-label="Site Footer">
       <div className="footerLogo">
-        <img src="/images/stellar-logo.svg" alt="Stellar Logo" height={36} />
+        <img src="/images/stellar-logo.svg" alt="Stellar Logo" />
       </div>
       <div className="footerListItems flx fdc jcc">
         <ul aria-label="Footer Links - Info">
@@ -40,4 +40,4 @@ export default function Footer() {
       </div>
     </footer>
   );
-} 
+}
