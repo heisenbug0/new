@@ -674,9 +674,11 @@ LOGIN WITH KEY/PHRASE STYLES
 }
 
 .inputSection{
-    align-items: flex-end;
+    align-items: center;
     padding: 5rem 0;
-    row-gap: 2rem;
+    row-gap: 3rem;
+    display: flex;
+    flex-direction: column;
 }
 
 /* SECRET KEY INPUT */
@@ -690,6 +692,8 @@ LOGIN WITH KEY/PHRASE STYLES
     width: 95%;
     color: var(--clr-primary-1);
     background-color: hsl(0, 0%, 100%);
+    font-size: 1.6rem;
+    font-family: 'Montserrat', sans-serif;
 }
 
 /* TEXT AREA INPUT */
@@ -698,6 +702,7 @@ LOGIN WITH KEY/PHRASE STYLES
     overflow-y: hidden;
     padding: 1rem;
     resize: none;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .loginInput:active,
@@ -708,14 +713,55 @@ LOGIN WITH KEY/PHRASE STYLES
 }
 
 .submitBtn{
-    align-items: flex-end;
-    background-color: hsl(206.97, 43.08%, 49.61%);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     border: 0;
+    border-radius: 1.5rem;
     color: hsl(0, 0%, 100%);
-    height: 5rem;
-    width: 150px;
-    margin-top: 1.5rem;
     cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    height: 5.5rem;
+    letter-spacing: 0.5px;
+    margin-top: 1rem;
+    min-width: 200px;
+    padding: 0 3rem;
+    position: relative;
+    text-transform: uppercase;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    overflow: hidden;
+}
+
+.submitBtn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.submitBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+}
+
+.submitBtn:hover::before {
+    left: 100%;
+}
+
+.submitBtn:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.submitBtn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.5);
 }
 
 /* LOGIN MODAL CONTENT MEDIA QUERY */
@@ -729,6 +775,12 @@ LOGIN WITH KEY/PHRASE STYLES
 .inputSection {
     row-gap: 4rem;
     padding: 5rem 8rem;
+}
+
+.submitBtn {
+    font-size: 2rem;
+    height: 6rem;
+    min-width: 220px;
 }
 }
 
