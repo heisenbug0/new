@@ -733,6 +733,17 @@ LOGIN WITH KEY/PHRASE STYLES
     overflow: hidden;
 }
 
+.submitBtn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.submitBtn:disabled:hover {
+    transform: none;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
 .submitBtn::before {
     content: '';
     position: absolute;
@@ -744,17 +755,17 @@ LOGIN WITH KEY/PHRASE STYLES
     transition: left 0.5s;
 }
 
-.submitBtn:hover {
+.submitBtn:hover:not(:disabled) {
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
     background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
 }
 
-.submitBtn:hover::before {
+.submitBtn:hover:not(:disabled)::before {
     left: 100%;
 }
 
-.submitBtn:active {
+.submitBtn:active:not(:disabled) {
     transform: translateY(0);
     box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
 }
