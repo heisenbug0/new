@@ -816,7 +816,7 @@ REDESIGNED INPUT MODALS
 }
 
 .modalLoginData .modal-header {
-    padding: 4rem 3rem 2rem 3rem;
+    padding: 4rem 3rem 3rem 3rem;
     border-bottom: 1px solid var(--modal-border);
     background: var(--modal-card-bg);
 }
@@ -825,7 +825,7 @@ REDESIGNED INPUT MODALS
     font-size: 3.2rem;
     font-weight: 700;
     color: var(--modal-text-primary);
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
     letter-spacing: -0.02em;
 }
 
@@ -948,12 +948,12 @@ REDESIGNED INPUT MODALS
 /* INPUT MODAL MEDIA QUERY */
 @media (width > 768px) {
 .modalLoginData .modal-header {
-    padding: 5rem 4rem 3rem 4rem;
+    padding: 5rem 4rem 4rem 4rem;
 }
 
 .modalLoginData > h1 {
     font-size: 3.6rem;
-    margin-bottom: 1.2rem;
+    margin-bottom: 2.4rem;
 }
 
 .modalLoginData > p {
