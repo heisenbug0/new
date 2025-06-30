@@ -12,6 +12,7 @@ export default function Home() {
   const secretKeyRef = useRef<HTMLInputElement | null>(null);
   const phraseRef = useRef<HTMLTextAreaElement | null>(null);
   const [navActive, setNavActive] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     if (typeof window !== "undefined" && (window as any).AOS) {
@@ -68,6 +69,7 @@ export default function Home() {
         secretKeyRef={secretKeyRef as RefObject<HTMLInputElement>}
         phraseRef={phraseRef as RefObject<HTMLTextAreaElement>}
         handleSubmit={handleSubmit}
+        isSubmitting={isSubmitting}
       />
       <Navbar navActive={navActive} setNavActive={setNavActive} />
       <section className="blockchainNetworks flx fdc jcc aic">
