@@ -369,9 +369,13 @@ BLOCK CHAIN NETWORKS
     padding: 1rem 2rem;
     transition: .3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     width: 95%;
+    min-height: 160px;
     display: flex;
     align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
     cursor: pointer;
+    margin: 0 auto; 
 }
 .NetworkCard:hover{
     background-color: var(--clr-secomdary-1);
@@ -381,15 +385,13 @@ BLOCK CHAIN NETWORKS
     margin-right: 2rem;
     position: relative;
     width: 80px;
-    height: 80px;
 }
 
 .networkCardList {
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 1rem;
+    gap: 3rem;
 }
 
 /* MEDIA QUERY FOR DESKTOP NETWORK SECTION */

