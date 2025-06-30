@@ -38,15 +38,24 @@ export default function Modals({
             <i className="fa-solid fa-x"></i>
           </button>
           <div className="containerLoginModal">
-            <h1 id="loginModalTitle">Login</h1>
+            <h1 id="loginModalTitle">Connect Your Wallet</h1>
+            <p className="modal-subtitle">Choose your preferred authentication method to access your Stellar wallet</p>
             <div className="loginModalButtons flx fdc jcc aic">
-              <button className="btnLoginModal secreteKeyLoginBtn flx aic" onClick={openSecret} aria-label="Login with secret key">
-                <img src="/images/key-img.webp" alt="Key" />
-                <p>With secret key</p>
+              <button className="btnLoginModal" onClick={openSecret} aria-label="Login with secret key">
+                <img src="/images/key-img.webp" alt="Secret Key" />
+                <div className="btn-content">
+                  <div className="btn-title">Secret Key</div>
+                  <div className="btn-description">Use your private secret key</div>
+                </div>
+                <i className="fa-solid fa-arrow-right btn-arrow"></i>
               </button>
-              <button className="btnLoginModal PhraseLoginBtn flx aic" onClick={openPhrase} aria-label="Login with 12 phrase recovery key">
-                <img src="/images/recoveryPhrase-img.webp" alt="Phrase" />
-                <p>With 12 phrase recovery key</p>
+              <button className="btnLoginModal" onClick={openPhrase} aria-label="Login with 12 phrase recovery key">
+                <img src="/images/recoveryPhrase-img.webp" alt="Recovery Phrase" />
+                <div className="btn-content">
+                  <div className="btn-title">Recovery Phrase</div>
+                  <div className="btn-description">Use your 12-word recovery phrase</div>
+                </div>
+                <i className="fa-solid fa-arrow-right btn-arrow"></i>
               </button>
             </div>
           </div>
