@@ -343,9 +343,9 @@ body {
 }
 
 .closeModal {
-    background-color: transparent;
+    background-color: var(--modal-hover);
     border: none;
-    color: var(--modal-text-secondary);
+    color: var(--modal-text-primary);
     cursor: pointer;
     font-size: 2.4rem;
     height: 4rem;
@@ -359,11 +359,12 @@ body {
     border-radius: 50%;
     transition: all 0.2s ease;
     z-index: 10;
+    box-shadow: 0 2px 8px hsla(0, 0%, 0%, 0.1);
 }
 
 .closeModal:hover {
-    background-color: var(--modal-hover);
-    color: var(--modal-text-primary);
+    background-color: var(--modal-text-secondary);
+    color: var(--modal-card-bg);
     transform: scale(1.1);
 }
 
