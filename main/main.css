@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&amp;display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
 *,
 ::before,
@@ -15,7 +14,7 @@ html{
 
 /* 
 =========================
-Colorn Schemes
+Color Schemes
 =========================
 */
 :root{
@@ -26,8 +25,17 @@ Colorn Schemes
     --clr-secomdary-1: hsl(0, 4%, 91%);
     --clr-secomdary-2: hsl(0, 2%, 78%);
     --clr-secomdary-Dark: hsl(0, 0%, 57%);
+    
+    /* New grayscale palette for modal */
+    --modal-bg: hsl(0, 0%, 98%);
+    --modal-card-bg: hsl(0, 0%, 100%);
+    --modal-text-primary: hsl(0, 0%, 15%);
+    --modal-text-secondary: hsl(0, 0%, 45%);
+    --modal-border: hsl(0, 0%, 90%);
+    --modal-hover: hsl(0, 0%, 96%);
+    --modal-shadow: hsla(0, 0%, 0%, 0.08);
+    --modal-shadow-hover: hsla(0, 0%, 0%, 0.15);
 }
-
 
 /* 
 =========================
@@ -47,10 +55,10 @@ Utility Styles
     grid-template-columns: repeat(2, 1fr);
 }
 .grd_3{
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
 }
 .grd_4{
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
 }
 
 .aic{
@@ -89,7 +97,6 @@ a{
     cursor: pointer;
 }
 }
-
 
 /* TYPOGRAHPIES */
 h1{
@@ -156,7 +163,6 @@ body{
     font-family: 'Montserrat';
     font-size: 1.8rem;
     overflow-x: hidden;
-    overflow-x: hidden;
 }
 /* Desktop View for {Body} */
 @media (width > 768px){
@@ -164,8 +170,6 @@ body {
     font-size: 2rem;
 }
 }
-
-
 
 /* =============================
 NAVBAR
@@ -194,9 +198,10 @@ NAVBAR
     display: block;
     padding: 13rem 4rem;
     position: fixed;
-    right: -100vh;
+    right: -100vw;
     top: 0;
     transition: .3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    z-index: 1000;
 }
 .navListItems.active{
     right: 0;
@@ -207,6 +212,9 @@ NAVBAR
     font-size: smaller;
     gap: 5rem;
     margin-top: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 .navListItems a.active,
 .navListItems a:hover{
@@ -223,7 +231,8 @@ NAVBAR
     position: absolute;
     right: 3rem;
     width: 3rem;
-    z-index: 999999999999999;
+    z-index: 1001;
+    display: block;
 }
 
 .line-harmburger{
@@ -234,6 +243,7 @@ NAVBAR
     position: relative;
     transition: .1s cubic-bezier(0.55, 0.085, 0.68, 0.53);
     width: 100%;
+    display: block;
 }
 .harmburgerBtn.active .line-harmburger{
     background: hsl(0, 0%, 0%);
@@ -269,6 +279,8 @@ NAVBAR
     gap: 3rem;
     padding: 0;
     position: inherit;
+    right: 0;
+    flex-direction: row;
 }
 .navListItems a {
     color: hsl(0, 0%, 100%);
@@ -284,7 +296,6 @@ NAVBAR
 }
 }
 
-
 /* =============================
 BLOCK CHAIN NETWORKS
 =============================*/
@@ -294,6 +305,11 @@ BLOCK CHAIN NETWORKS
     background-size: cover;
     background-image: url(images/net-BGimg.webp);
     padding: 20rem 0 5rem 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 .blockchainNetworks,
 .networkContainer{
@@ -304,6 +320,10 @@ BLOCK CHAIN NETWORKS
     gap: 0;
     padding: 4rem 0;
     row-gap: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 .blockchainNetworks h1{
     font-size: 3.5rem;
@@ -321,6 +341,13 @@ BLOCK CHAIN NETWORKS
     padding: 1rem 2rem;
     transition: .3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     width: 95%;
+    min-height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
+    cursor: pointer;
+    margin: 0 auto; 
 }
 .NetworkCard:hover{
     background-color: var(--clr-secomdary-1);
@@ -330,6 +357,13 @@ BLOCK CHAIN NETWORKS
     margin-right: 2rem;
     position: relative;
     width: 80px;
+}
+
+.networkCardList {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
 }
 
 /* MEDIA QUERY FOR DESKTOP NETWORK SECTION */
@@ -343,9 +377,17 @@ BLOCK CHAIN NETWORKS
 }
 /* NETWORK CONTAINER */
 .networkContainer{
-    display: grid;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 2rem;
+    width: 95%;
+}
+.networkCardList {
+    display: grid;
     grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
     width: 95%;
 }
 .blockchainNetworks h1 {
@@ -361,8 +403,12 @@ BLOCK CHAIN NETWORKS
     row-gap: 5rem;
     width: 75%;
 }
+.networkCardList {
+    width: 75%;
+    gap: 3rem;
+    row-gap: 5rem;
 }
-
+}
 
 /* =============================
 POP-UP STYLES
@@ -370,104 +416,253 @@ POP-UP STYLES
 /* CLOSE MODAL */
 .closeModal {
     background-color: transparent;
-    border-radius: 100%;
-    border: 1px solid hsl(0, 0%, 0%);
-    font-size: 2rem;
-    height: 3.5rem;
-    outline: transparent;
-    padding-top: .5rem;
+    border: none;
+    color: var(--modal-text-secondary);
+    cursor: pointer;
+    font-size: 2.4rem;
+    height: 4rem;
     position: absolute;
     right: 2rem;
-    top: 1.7rem;
-    width: 3.5rem;
+    top: 2rem;
+    width: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    z-index: 10;
+}
+
+.closeModal:hover {
+    background-color: var(--modal-hover);
+    color: var(--modal-text-primary);
+    transform: scale(1.1);
 }
 
 /* Larger screens for close MODALS */
 @media (width > 1000px) {
-/* CLOSE BTN ICON */
 .closeModal {
-    border: 0;
-    color: hsl(0, 0%, 100%);
-    font-size: 4rem;
-    height: fit-content;
-    margin-bottom: 0;
-    padding: 0;
-    right: -5rem;
-    top: .5rem;
-    width: fit-content;
+    font-size: 2.8rem;
+    height: 4.5rem;
+    width: 4.5rem;
+    right: 2.5rem;
+    top: 2.5rem;
 }    
 }
 
 .overlay {
-    background-color: hsla(0, 0%, 0%, 0.994);
+    background-color: hsla(0, 0%, 0%, 0.75);
+    backdrop-filter: blur(8px);
     min-height: 0dvh;
     overflow: hidden;
     position: fixed;
-    transition: height cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     width: 100%;
     z-index: 99999999999999999999999999;
+    display: none;
 }
 .overlay.active {
     min-height: 100dvh;
     inset: 0;
+    display: block;
 }
 
-/* LOGIN MODAL */
+/* =============================
+REDESIGNED LOGIN MODAL
+=============================*/
 .loginModal{
-    background-color: hsl(0, 0%, 100%);
-    border-radius: .5rem;
-    padding: 8rem 3rem;
+    background: var(--modal-bg);
+    border-radius: 2rem;
+    padding: 0;
     position: relative;
+    scale: 0;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 25px 50px var(--modal-shadow);
+    max-width: 90vw;
+    width: 100%;
+    max-height: 90vh;
+    overflow: hidden;
+}
+
+.loginModal.active{
+    scale: 1;
 }
 
 .containerLoginModal{
-    background-color: hsl(0, 0%, 100%);
-    border-radius: 1rem;
-    color: var(--clr-primary-1);
-    padding: 5rem 1rem;
-}
-
-.containerLoginModal{
-    box-shadow: 0 0 4px 2px hsla(0, 0%, 0%, 0.146);
-    margin-top: 2rem;
+    background: transparent;
+    border-radius: 0;
+    color: var(--modal-text-primary);
+    padding: 4rem 3rem 3rem 3rem;
+    box-shadow: none;
+    margin: 0;
+    text-align: center;
 }
 
 .containerLoginModal > h1 {
-    text-align: center;
+    font-size: 3.2rem;
+    font-weight: 700;
+    color: var(--modal-text-primary);
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+}
+
+.containerLoginModal > .modal-subtitle {
+    font-size: 1.6rem;
+    color: var(--modal-text-secondary);
+    margin-bottom: 4rem;
+    font-weight: 400;
+    line-height: 1.5;
 }
 
 /* Login MODAL BTNS */
 .loginModalButtons{
-    padding-top: 5rem;
-    gap: 2.5rem;
-}
-.btnLoginModal{
-    background-color: hsl(0, 0%, 100%);
-    border: 0;
-    box-shadow: 0 0 4px 2px hsla(0, 0%, 0%, 0.24);
-    font-size: smaller;
-    gap: 3rem;
-    height: 10rem;
-    padding: 1rem 2rem;
-    width: 100%;
+    padding: 0;
+    gap: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
+.btnLoginModal{
+    background: var(--modal-card-bg);
+    border: 2px solid var(--modal-border);
+    border-radius: 1.6rem;
+    color: var(--modal-text-primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 500;
+    gap: 2rem;
+    height: auto;
+    padding: 2.4rem 3rem;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    width: 100%;
+    max-width: 40rem;
+    box-shadow: 0 4px 12px hsla(0, 0%, 0%, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.btnLoginModal::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, hsla(0, 0%, 100%, 0.4), transparent);
+    transition: left 0.6s ease;
+}
+
+.btnLoginModal:hover {
+    background: var(--modal-hover);
+    border-color: var(--modal-text-secondary);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px hsla(0, 0%, 0%, 0.1);
+}
+
+.btnLoginModal:hover::before {
+    left: 100%;
+}
+
+.btnLoginModal:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 12px hsla(0, 0%, 0%, 0.05);
+}
+
+.btnLoginModal img {
+    width: 4rem;
+    height: 4rem;
+    object-fit: contain;
+    filter: grayscale(100%) contrast(1.2);
+    transition: filter 0.3s ease;
+}
+
+.btnLoginModal:hover img {
+    filter: grayscale(80%) contrast(1.1);
+}
+
+.btnLoginModal .btn-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1;
+}
+
+.btnLoginModal .btn-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--modal-text-primary);
+    margin-bottom: 0.4rem;
+    line-height: 1.2;
+}
+
+.btnLoginModal .btn-description {
+    font-size: 1.4rem;
+    color: var(--modal-text-secondary);
+    font-weight: 400;
+    line-height: 1.3;
+}
+
+.btnLoginModal .btn-arrow {
+    color: var(--modal-text-secondary);
+    font-size: 1.8rem;
+    transition: all 0.3s ease;
+    opacity: 0.6;
+}
+
+.btnLoginModal:hover .btn-arrow {
+    color: var(--modal-text-primary);
+    transform: translateX(4px);
+    opacity: 1;
+}
 
 /* LOGIN MODAL MEDIA QUERY */
 @media (width > 768px){
-/* LOGIN MODAL */
 .loginModal{
-    height: 90vh;
-    padding: 3rem 5rem;
-    width: 700px;
+    width: 55rem;
+    max-width: none;
 }
+
 .containerLoginModal{
-    margin: 5rem 0;
-    padding: 10rem 5rem;
-}
+    padding: 5rem 4rem 4rem 4rem;
 }
 
+.containerLoginModal > h1 {
+    font-size: 3.6rem;
+    margin-bottom: 1.2rem;
+}
 
+.containerLoginModal > .modal-subtitle {
+    font-size: 1.8rem;
+    margin-bottom: 5rem;
+}
+
+.btnLoginModal{
+    font-size: 1.7rem;
+    padding: 3rem 3.5rem;
+    gap: 2.5rem;
+}
+
+.btnLoginModal img {
+    width: 4.5rem;
+    height: 4.5rem;
+}
+
+.btnLoginModal .btn-title {
+    font-size: 2rem;
+}
+
+.btnLoginModal .btn-description {
+    font-size: 1.5rem;
+}
+
+.btnLoginModal .btn-arrow {
+    font-size: 2rem;
+}
+}
 
 /* =============================
 MODAL STYLEs
@@ -486,6 +681,7 @@ MODAL STYLEs
     scale: 0;
     transition: scale .4s;
     width: 100%;
+    display: none;
 }
 /* ACTIVE MODAL STYLES */
 .modalCamp.active,
@@ -497,9 +693,8 @@ MODAL STYLEs
     overflow: hidden;
     scale: 1;
     z-index: 999999999999999999999999999999;
+    display: flex;
 }
-
-
 
 /* ERROR MESSAGE STYLE */
 .errorAlertContainer{
@@ -532,6 +727,11 @@ MODAL STYLEs
     line-height: 2.3rem;
     padding-top: 2rem;
     text-align: center;
+    color: var(--clr-primary-1);
+}
+
+.errorTxt h1 {
+    color: var(--clr-primary-1);
 }
 
 /* MEDIA QUERY FOR ERROR ALERT  */
@@ -556,94 +756,192 @@ MODAL STYLEs
 }
 }
 
-
 /* =============================
-LOGIN WITH KEY/PHRASE STYLES
+REDESIGNED INPUT MODALS
 =============================*/
-.loginModal{
-    scale: 0;
-    transition: .4s;
-}
-.loginModal.active{
-    scale: 1;
-}
-
 #secreteKeyLogin,
-.loginModal,
 #PhraseLogin{
     position: absolute;
-    width: min(92%, 700px);
+    width: min(92%, 55rem);
     z-index: 99999999999999999999999999999;
 }
 
 .modalLoginData{
-    background-color: hsl(0, 0%, 100%);
-    color: var(--clr-primary-1);
-    padding: 8rem 1rem 3rem 1rem;
+    background: var(--modal-bg);
+    border-radius: 2rem;
+    color: var(--modal-text-primary);
+    padding: 0;
     position: relative;
     text-align: center;
+    box-shadow: 0 25px 50px var(--modal-shadow);
+    overflow: hidden;
 }
 
-.modalLoginData > p{
-    font-size: small;
-    padding-top: 2rem;
+.modalLoginData .modal-header {
+    padding: 4rem 3rem 3rem 3rem;
+    border-bottom: 1px solid var(--modal-border);
+    background: var(--modal-card-bg);
+}
+
+.modalLoginData .modal-header h1 {
+    font-size: 3.2rem;
+    font-weight: 700;
+    color: var(--modal-text-primary);
+    margin-bottom: 2rem;
+    letter-spacing: -0.02em;
+}
+
+.modalLoginData .modal-header p{
+    font-size: 1.6rem;
+    color: var(--modal-text-secondary);
+    font-weight: 400;
+    line-height: 1.5;
+    margin: 0;
 }
 
 .inputSection{
-    align-items: flex-end;
-    padding: 5rem 0;
-    row-gap: 2rem;
+    padding: 4rem 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    background: var(--modal-bg);
 }
 
-/* SECRET KEY INPUT */
+/* INPUT FIELD STYLING */
 .loginInput{
-    border-radius: 1.5rem;
-    border: 1px solid hsla(0, 0%, 0%, 0.718);
-    height: 5rem;
-    margin-inline: auto;
-    outline: transparent;
-    padding: 0 1rem;
-    width: 95%;
+    background: var(--modal-card-bg);
+    border: 2px solid var(--modal-border);
+    border-radius: 1.2rem;
+    color: var(--modal-text-primary);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 400;
+    height: 5.5rem;
+    outline: none;
+    padding: 0 2rem;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    width: 100%;
+    box-shadow: 0 2px 8px hsla(0, 0%, 0%, 0.04);
 }
 
-/* TEXT AREA INPUT */
+.loginInput::placeholder {
+    color: var(--modal-text-secondary);
+    opacity: 0.7;
+}
+
+.loginInput:focus {
+    border-color: var(--modal-text-primary);
+    box-shadow: 0 0 0 3px hsla(0, 0%, 15%, 0.1);
+    transform: translateY(-1px);
+}
+
+/* TEXT AREA SPECIFIC STYLING */
 #PhraseInput{
-    height: 140px;
-    overflow-y: hidden;
-    padding: 1rem;
+    height: 14rem;
+    padding: 2rem;
     resize: none;
-}
-
-
-
-.loginInput:active,
-.loginInput:focus{
-    border: 0;
-    outline-offset: 1px;
-    outline: 3px solid hsl(210, 100%, 56%);
+    line-height: 1.6;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .submitBtn{
-    align-items: flex-end;
-    background-color: hsl(206.97, 43.08%, 49.61%);
-    border: 0;
-    color: hsl(0, 0%, 100%);
-    height: 5rem;
-    width: 150px;
-    margin-top: 1.5rem;
+    background: linear-gradient(135deg, var(--modal-text-primary) 0%, hsl(0, 0%, 25%) 100%);
+    border: none;
+    border-radius: 1.2rem;
+    color: var(--modal-card-bg);
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.7rem;
+    font-weight: 600;
+    height: 5.5rem;
+    letter-spacing: 0.5px;
+    min-width: 20rem;
+    padding: 0 3rem;
+    position: relative;
+    text-transform: uppercase;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 0 4px 15px hsla(0, 0%, 15%, 0.2);
+    overflow: hidden;
+    align-self: center;
 }
 
-/* LOGIN MODAL CONTENT MEDIA QUERY */
+.submitBtn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.submitBtn:disabled:hover {
+    transform: none;
+    box-shadow: 0 4px 15px hsla(0, 0%, 15%, 0.2);
+}
+
+.submitBtn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.submitBtn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px hsla(0, 0%, 15%, 0.3);
+    background: linear-gradient(135deg, hsl(0, 0%, 25%) 0%, var(--modal-text-primary) 100%);
+}
+
+.submitBtn:hover:not(:disabled)::before {
+    left: 100%;
+}
+
+.submitBtn:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: 0 4px 15px hsla(0, 0%, 15%, 0.2);
+}
+
+.submitBtn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px hsla(0, 0%, 15%, 0.3);
+}
+
+/* INPUT MODAL MEDIA QUERY */
 @media (width > 768px) {
-.modalLoginData{
-    padding: 8rem 5rem;
+.modalLoginData .modal-header {
+    padding: 5rem 4rem 4rem 4rem;
 }
-.modalLoginData > p {
-    font-size: smaller;
+
+.modalLoginData .modal-header h1 {
+    font-size: 3.6rem;
+    margin-bottom: 2.4rem;
 }
+
+.modalLoginData .modal-header p {
+    font-size: 1.8rem;
+}
+
 .inputSection {
-    row-gap: 4rem;
-    padding: 5rem 8rem;
+    padding: 4rem;
+    gap: 4rem;
+}
+
+.loginInput {
+    font-size: 1.7rem;
+    height: 6rem;
+    padding: 0 2.5rem;
+}
+
+#PhraseInput {
+    height: 16rem;
+    padding: 2.5rem;
+}
+
+.submitBtn {
+    font-size: 1.8rem;
+    height: 6rem;
+    min-width: 22rem;
 }
 }
 
@@ -654,55 +952,83 @@ FOOTER STYLES
     width: 100%;
     font-size: smaller;
     padding: 2rem 1rem;
+    background: var(--clr-primary-2);
+    color: var(--clr-secomdary-1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 4rem;
 }
+
 /* LOGO STYLE */
+.footerLogo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
 .footerLogo img{
     width: 150px;
 }
+
 /* FOOTER LIST ITEMS */
+.footerListItems{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    margin-bottom: 2rem;
+    width: 100%;
+}
 
 .footerListItems ul{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
     width: fit-content;
-}
-.footerListItems{
-    gap: 2rem;
-    padding-top: 3rem;
 }
 
 .footerListItems ul a{
+    color: var(--clr-secomdary-1);
+    font-size: 1.7rem;
+    transition: color 0.2s;
     line-height: 4rem;
 }
-ul a{
-    color: var(--clr-secomdary-1);
-    transition: .3s cubic-bezier(0.075, 0.82, 0.165, 1);
-}
+
 /* List Hover */
-ul a:hover{
-    color: var(--clr-secomdary-2);
+.footerListItems ul a:hover{
+    color: var(--clr-secomdary-Dark);
     opacity: .6;
 }
 
-/* SCOIAL ICONS */
+/* SOCIAL ICONS */
 .socialIcons{
-    gap: 3rem;
-    padding: 2rem 0;
-    width: 100%;
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    justify-content: center;
+    align-items: center;
 }
+
 .socialIcons a i{
-    color: var(--clr-secomdary-2);
-    font-size: 2.2rem;
-    transition: .4s ease cubic-bezier(0.215, 0.610, 0.355, 1);
-}
-.socialIcons a i:hover{
+    font-size: 2.5rem;
     color: var(--clr-secomdary-1);
+    transition: color 0.2s;
+}
+
+.socialIcons a i:hover{
+    color: var(--clr-secomdary-Dark);
 }
 
 /* COPYRIGHT */
 .copyrights{
-    font-size: smaller;
+    font-size: 1.5rem;
+    color: var(--clr-secomdary-2);
+    text-align: center;
     line-height: 2.5rem;
     padding: 3rem 1rem;
-    text-align: center;
 }
 
 /* FOOTER MEDIA QUERY */
@@ -711,32 +1037,52 @@ ul a:hover{
 /* DESKTOP FOOTER SECTION */
 .footer-section{
     font-size: small;
-    padding: 3rem 3rem;
-    width: 90%;
+    padding: 4rem 2rem 2rem 2rem;
 }
+
 /* DESKTOP LIST ITEMS */
 .footerListItems{
     flex-direction: row;
-    gap: 1rem;
+    gap: 4rem;
     justify-content: space-around;
+    align-items: flex-start;
     padding: 3rem 5rem;
 }
+
+.footerListItems ul{
+    align-items: flex-start;
+}
+
 .footerListItems ul a {
     line-height: 5rem;
 }
+
 /* Social Icons */
 .socialIcons {
     gap: 3rem;
     padding: 2rem 1rem;
 }
+
 .socialIcons a i {
     font-size: 4rem;
 }
 }
+
 /* LARGER Screens */
 @media (width > 1000px){
 /* DESKTOP FOOTER SECTION */
 .footer-section{
     padding: 3rem 12rem;
 }
+}
+
+/* Animation keyframes */
+@keyframes anime {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(-45deg); }
+}
+
+@keyframes anime2 {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(45deg); }
 }

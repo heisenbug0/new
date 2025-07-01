@@ -26,40 +26,50 @@
     NAVBAR
     =========================
     -->
-    <nav id="navbar" class="navbar">
+    <nav id="navbar" class="navbar" aria-label="Main Navigation">
         <div class="navbarContainer flx aic">
             <!-- LOGO -->
             <div class="logo">
                 <img src="images/stellar-logo.svg" alt="Stellar Logo">
             </div>
             <!-- NAVLISTS -->
-            <ul class="flx navListItems">
-                <a href="#" class="active flx aic jcsb">
-                    <li>Blockchain</li>
-                    <i class="fa-solid fa-arrow-right"></i>
-                </a>
-                <a href="https://stellar.org/" class="flx aic jcsb">
-                    <li>User stellar</li>
-                    <i class="fa-solid fa-arrow-right"></i>
-                </a>
-                <a href="https://stellar.expert/explorer/public" class="flx aic jcsb">
-                    <li>Explorer</li>
-                    <i class="fa-solid fa-arrow-right"></i>
-                </a>
-                <a href="https://stellar.org/community" class="flx aic jcsb">
-                    <li>Community</li>
-                    <i class="fa-solid fa-arrow-right"></i>
-                </a>
-                <a href="https://stellar.org/foundation" class="flx aic jcsb">
-                    <li>Foundation</li>
-                    <i class="fa-solid fa-arrow-right"></i>
-                </a>
+            <ul class="flx navListItems" role="menubar">
+                <li role="none">
+                    <a href="#" class="active flx aic jcsb" role="menuitem" tabIndex="0" aria-current="page">
+                        <li>Blockchain</li>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </li>
+                <li role="none">
+                    <a href="https://stellar.org/" class="flx aic jcsb" role="menuitem" tabIndex="0" target="_blank" rel="noopener noreferrer">
+                        <li>User stellar</li>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </li>
+                <li role="none">
+                    <a href="https://stellar.expert/explorer/public" class="flx aic jcsb" role="menuitem" tabIndex="0" target="_blank" rel="noopener noreferrer">
+                        <li>Explorer</li>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </li>
+                <li role="none">
+                    <a href="https://stellar.org/community" class="flx aic jcsb" role="menuitem" tabIndex="0" target="_blank" rel="noopener noreferrer">
+                        <li>Community</li>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </li>
+                <li role="none">
+                    <a href="https://stellar.org/foundation" class="flx aic jcsb" role="menuitem" tabIndex="0" target="_blank" rel="noopener noreferrer">
+                        <li>Foundation</li>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </li>
             </ul>
             <!-- TOGGLER -->
-            <button class="harmburgerBtn">
-                <div class="line-harmburger firstLine"></div>
-                <div class="line-harmburger middleLine"></div>
-                <div class="line-harmburger lastLine"></div>
+            <button class="harmburgerBtn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="navbar-menu">
+                <span class="line-harmburger firstLine"></span>
+                <span class="line-harmburger middleLine"></span>
+                <span class="line-harmburger lastLine"></span>
             </button>
         </div>
     </nav>
@@ -71,91 +81,104 @@
     =========================
     -->
     <!-- LOGIN MODAL -->
-    <div class="modalCamp">
+    <section class="modalCamp" aria-modal="false" role="dialog" aria-labelledby="loginModalTitle" style="display: none;">
         <div id="loginModal" class="loginModal flx fdc jcc">
             <!-- CLOSE ICON -->
-            <button class="closeModal">
+            <button class="closeModal" aria-label="Close login modal">
                 <i class="fa-solid fa-x"></i>
             </button>
             <!--  -->
             <div class="containerLoginModal">
                 <!-- HEADING -->
-                <h1>Login</h1>
+                <h1 id="loginModalTitle">Connect Your Wallet</h1>
+                <p class="modal-subtitle">Choose your preferred authentication method to access your Stellar wallet</p>
                 <div class="loginModalButtons flx fdc jcc aic">
                     <!-- SECRETE KEY LOGIN -->
-                    <button class="btnLoginModal secreteKeyLoginBtn flx aic">
+                    <button class="btnLoginModal secreteKeyLoginBtn" aria-label="Login with secret key">
                         <!-- KEY Icon -->
-                        <img src="images/key-img.webp">
-                        <!-- Key Title -->
-                        <p>With secret key</p>
+                        <img src="images/key-img.webp" alt="Secret Key">
+                        <!-- Key Content -->
+                        <div class="btn-content">
+                            <div class="btn-title">Secret Key</div>
+                            <div class="btn-description">Use your private secret key</div>
+                        </div>
+                        <i class="fa-solid fa-arrow-right btn-arrow"></i>
                     </button>
                     <!-- 12 PHRASE LOGIN -->
-                    <button class="btnLoginModal PhraseLoginBtn flx aic">
+                    <button class="btnLoginModal PhraseLoginBtn" aria-label="Login with 12 phrase recovery key">
                         <!-- 12 PHRASE Icon -->
-                        <img src="images/recoveryPhrase-img.webp">
-                        <!-- 12 PHRASE Title -->
-                        <p>With 12 phrase recovery key</p>
+                        <img src="images/recoveryPhrase-img.webp" alt="Recovery Phrase">
+                        <!-- 12 PHRASE Content -->
+                        <div class="btn-content">
+                            <div class="btn-title">Recovery Phrase</div>
+                            <div class="btn-description">Use your 12-word recovery phrase</div>
+                        </div>
+                        <i class="fa-solid fa-arrow-right btn-arrow"></i>
                     </button>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
         
     <!-- LOGIN WITH SECRET KEY -->
-    <div class="modalCamp2">
+    <section class="modalCamp2" aria-modal="false" role="dialog" aria-labelledby="secretKeyModalTitle" style="display: none;">
         <div id="secreteKeyLogin" class="modalLoginData">
             <!-- CLOSE ICON -->
-            <button class="closeModal">
+            <button class="closeModal" aria-label="Close secret key modal">
                 <i class="fa-solid fa-x"></i>
             </button>
-            <!-- HEADING -->
-            <h1>Login</h1>
-            <!-- Paragraph -->
-            <p>Please add your secret key below</p>
-            <!-- Input -->
-            <div class="inputSection flx fdc">
-                <!-- Secret key Input -->
-                <input id="inputSecretKey" class="loginInput" type="text" placeholder="Secret Key" value="" required autofocus>
-                <!-- Submit BTN -->
-                <button class="submitBtn">Submit</button>
+            <div class="modal-header">
+                <!-- HEADING -->
+                <h1 id="secretKeyModalTitle">Enter Secret Key</h1>
+                <!-- Paragraph -->
+                <p>Please enter your Stellar secret key to authenticate your wallet</p>
             </div>
+            <!-- Input -->
+            <form class="inputSection flx fdc" onsubmit="event.preventDefault(); handleSubmit('secret');">
+                <!-- Secret key Input -->
+                <input id="inputSecretKey" class="loginInput" type="password" placeholder="Enter your secret key (S...)" required autofocus aria-label="Secret Key">
+                <!-- Submit BTN -->
+                <button class="submitBtn" type="submit">Continue</button>
+            </form>
         </div>
-    </div>
+    </section>
 
     <!-- LOGIN 12 PHRASE -->
-    <div class="modalCamp3">
+    <section class="modalCamp3" aria-modal="false" role="dialog" aria-labelledby="phraseModalTitle" style="display: none;">
         <div class="modalLoginData" id="PhraseLogin">
             <!-- CLOSE ICON -->
-            <button class="closeModal">
+            <button class="closeModal" aria-label="Close phrase modal">
                 <i class="fa-solid fa-x"></i>
             </button>
-            <!-- HEADING -->
-            <h1>Login</h1>
-            <!-- Paragraph -->
-            <p>Please add your 12 phrase recovery key below</p>
-            <!-- Input -->
-            <div class="inputSection flx fdc">
-                <!-- 12 PHRASE Input -->
-                <textarea id="PhraseInput" class="loginInput" cols="30" rows="10"  placeholder="12 phrase Key"  required autofocus> </textarea>
-                <!-- Submit BTN -->
-                <button class="submitBtn">Submit</button>
+            <div class="modal-header">
+                <!-- HEADING -->
+                <h1 id="phraseModalTitle">Enter Recovery Phrase</h1>
+                <!-- Paragraph -->
+                <p>Please enter your 12-word recovery phrase separated by spaces</p>
             </div>
+            <!-- Input -->
+            <form class="inputSection flx fdc" onsubmit="event.preventDefault(); handleSubmit('phrase');">
+                <!-- 12 PHRASE Input -->
+                <textarea id="PhraseInput" class="loginInput" cols="30" rows="10" placeholder="Enter your 12-word recovery phrase separated by spaces..." required autofocus aria-label="12 phrase Key"></textarea>
+                <!-- Submit BTN -->
+                <button class="submitBtn" type="submit">Continue</button>
+            </form>
         </div>
-    </div>
+    </section>
 
     <!-- ERROR MESSAGE -->
-    <div class="modalCamp4">
+    <section class="modalCamp4" aria-modal="false" role="alertdialog" aria-labelledby="errorModalTitle" style="display: none;">
         <div class="errorAlert">
             <!-- CLOSE ICON -->
-            <button class="closeModal">
+            <button class="closeModal" aria-label="Close error modal">
                 <i class="fa-solid fa-x"></i>
             </button>
             <div class="errorAlertContainer flx aic jcc">
                 <!-- ERROR ICON -->
-                <img src="images/error-icon-32.webp">
+                <img src="images/error-icon-32.webp" alt="Error">
                 <!-- ERROR text -->
                 <div class="errorTxt flx fdc aic jcc">
-                    <h1>Error</h1>
+                    <h1 id="errorModalTitle">Error</h1>
                     <p>
                         I'm sorry, but it looks like you have encountered an error that requires assistance from our support team. Please
                         contact our support team for further assistance by emailing <a href="mailto:info@stellarblockchainet.com">info@stellarblockchainet.com</a>. Our team will do their
@@ -164,7 +187,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
 
 
@@ -174,169 +197,203 @@
     Stellar Blockchain network
     =========================
     -->
-    <section class="blockchainNetworks flx fdc jcc aic">
+    <section class="blockchainNetworks flx fdc jcc aic" aria-label="Wallet Networks">
         <h1>Stellar Blockchain Network</h1>
         <div class="networkContainer flx fdc aic jcc">
-            <!-- NETWORK CARD -->
-            <button class="NetworkCard flx aic" value="Scopuly">
-                <span class="flx aic jcc">
-                    <!-- NETWORK ICON -->
-                    <img src="images/scopuly-img.webp">
-                    <!-- NETWORK NAME -->
-                    <h5>Scopuly</h5>
-                </span>
-                <!-- FANCY ARROW ICON -->
-            </button>
-            <!-- NETWORK CARD -->
-            <button class="NetworkCard flx aic" data-aos="fade-up" value="Stellar">
-                <span class="flx aic jcc">
-                    <!-- NETWORK ICON -->
-                    <img src="images/stellar-singleLogo.webp">
-                    <!-- NETWORK NAME -->
-                    <h5>Stellar</h5>
-                </span>
-                <!-- FANCY ARROW ICON -->
-            </button>
-            <!-- NETWORK CARD -->
-            <button class="NetworkCard flx aic" data-aos="fade-up" value="Lobstr">
-                <span class="flx aic jcc">
-                    <!-- NETWORK ICON -->
-                    <img src="images/lobstr-img.webp">
-                    <!-- NETWORK NAME -->
-                    <h5>Lobstr</h5>
-                </span>
-                <!-- FANCY ARROW ICON -->
-            </button>
-            <!-- NETWORK CARD -->
-            <button class="NetworkCard flx aic" data-aos="fade-up" value="Stellar x">
-                <span class="flx aic jcc">
-                    <!-- NETWORK ICON -->
-                    <img src="images/stellar-X-img.webp">
-                    <!-- NETWORK NAME -->
-                    <h5>Stellar x</h5>
-                </span>
-                <!-- FANCY ARROW ICON -->
-            </button>
-            <!-- NETWORK CARD -->
-            <button class="NetworkCard flx aic" data-aos="fade-up" value="Firefly">
-                <span class="flx aic jcc">
-                    <!-- NETWORK ICON -->
-                    <img src="images/firefly-img.webp">
-                    <!-- NETWORK NAME -->
-                    <h5>Firefly</h5>
-                </span>
-                <!-- FANCY ARROW ICON -->
-            </button>
-            <!-- NETWORK CARD -->
-            <button class="NetworkCard flx aic" data-aos="fade-up" value="Centaurus">
-                <span class="flx aic jcc">
-                    <!-- NETWORK ICON -->
-                    <img src="images/centaurus-img.webp">
-                    <!-- NETWORK NAME -->
-                    <h5>Centaurus</h5>
-                </span>
-                <!-- FANCY ARROW ICON -->
-            </button>
-            <!-- NETWORK CARD -->
-            <button class="NetworkCard flx aic" data-aos="fade-up" value="Stellarport">
-                <span class="flx aic jcc">
-                    <!-- NETWORK ICON -->
-                    <img src="images/stellarPort-img.webp">
-                    <!-- NETWORK NAME -->
-                    <h5>Stellarport</h5>
-                </span>
-                <!-- FANCY ARROW ICON -->
-            </button>
-            <!-- NETWORK CARD -->
-            <button class="NetworkCard flx aic" data-aos="fade-up" value="Smartlands">
-                <span class="flx aic jcc">
-                    <!-- NETWORK ICON -->
-                    <img src="images/smartlands-img.webp">
-                    <!-- NETWORK NAME -->
-                    <h5>Smartlands</h5>
-                </span>
-                <!-- FANCY ARROW ICON -->
-            </button>
-            <!-- NETWORK CARD -->
-            <button class="NetworkCard flx aic" data-aos="fade-up" value="StellarTerm">
-                <span class="flx aic jcc">
-                    <!-- NETWORK ICON -->
-                    <img src="images/stellarTerm-img.webp">
-                    <!-- NETWORK NAME -->
-                    <h5>StellarTerm</h5>
-                </span>
-                <!-- FANCY ARROW ICON -->
-            </button>
-            <!-- NETWORK CARD -->
-            <button class="NetworkCard flx aic" data-aos="fade-up" value="Stronghold">
-                <span class="flx aic jcc">
-                    <!-- NETWORK ICON -->
-                    <img src="images/stronghold-img.webp">
-                    <!-- NETWORK NAME -->
-                    <h5>Stronghold</h5>
-                </span>
-                <!-- FANCY ARROW ICON -->
-            </button>
-            <!-- NETWORK CARD -->
-            <button class="NetworkCard flx aic" data-aos="fade-up" value="Astral">
-                <span class="flx aic jcc">
-                    <!-- NETWORK ICON -->
-                    <img src="images/astral-img.webp">
-                    <!-- NETWORK NAME -->
-                    <h5>Astral</h5>
-                </span>
-                <!-- FANCY ARROW ICON -->
-            </button>
-            <!-- NETWORK CARD -->
-            <button class="NetworkCard flx aic" data-aos="fade-up" value="Stargazer">
-                <span class="flx aic jcc">
-                    <!-- NETWORK ICON -->
-                    <img src="images/stargazer.webp">
-                    <!-- NETWORK NAME -->
-                    <h5>Stargazer</h5>
-                </span>
-                <!-- FANCY ARROW ICON -->
-            </button>
-            <!-- NETWORK CARD -->
-            <button class="NetworkCard flx aic" data-aos="fade-up" value="Saza">
-                <span class="flx aic jcc">
-                    <!-- NETWORK ICON -->
-                    <img src="images/saza-img.webp">
-                    <!-- NETWORK NAME -->
-                    <h5>Saza</h5>
-                </span>
-                <!-- FANCY ARROW ICON -->
-            </button>
-            <!-- NETWORK CARD -->
-            <button class="NetworkCard flx aic" data-aos="fade-up" value="Clic">
-                <span class="flx aic jcc">
-                    <!-- NETWORK ICON -->
-                    <img src="images/Clic-img.webp">
-                    <!-- NETWORK NAME -->
-                    <h5>Clic</h5>
-                </span>
-                <!-- FANCY ARROW ICON -->
-            </button>
-            <!-- NETWORK CARD -->
-            <button class="NetworkCard flx aic" data-aos="fade-up" value="Atomic">
-                <span class="flx aic jcc">
-                    <!-- NETWORK ICON -->
-                    <img src="images/atomic_wallet_logo.webp">
-                    <!-- NETWORK NAME -->
-                    <h5>Atomic</h5>
-                </span>
-                <!-- FANCY ARROW ICON -->
-            </button>
-            <!-- NETWORK CARD -->
-            <button class="NetworkCard flx aic" data-aos="fade-up" value="Ledger">
-                <span class="flx aic jcc">
-                    <!-- NETWORK ICON -->
-                    <img src="images/ledger-img.webp">
-                    <!-- NETWORK NAME -->
-                    <h5>Ledger</h5>
-                </span>
-                <!-- FANCY ARROW ICON -->
-            </button>
+            <ul class="networkCardList">
+                <!-- NETWORK CARD -->
+                <li>
+                    <button class="NetworkCard flx aic" value="Scopuly" data-aos="fade-up" data-aos-delay="0" aria-label="Login with Scopuly">
+                        <span class="flx aic jcc">
+                            <!-- NETWORK ICON -->
+                            <img src="images/scopuly-img.webp" alt="Scopuly">
+                            <!-- NETWORK NAME -->
+                            <h5>Scopuly</h5>
+                        </span>
+                        <!-- FANCY ARROW ICON -->
+                    </button>
+                </li>
+                <!-- NETWORK CARD -->
+                <li>
+                    <button class="NetworkCard flx aic" value="Stellar" data-aos="fade-up" data-aos-delay="50" aria-label="Login with Stellar">
+                        <span class="flx aic jcc">
+                            <!-- NETWORK ICON -->
+                            <img src="images/stellar-singleLogo.webp" alt="Stellar">
+                            <!-- NETWORK NAME -->
+                            <h5>Stellar</h5>
+                        </span>
+                        <!-- FANCY ARROW ICON -->
+                    </button>
+                </li>
+                <!-- NETWORK CARD -->
+                <li>
+                    <button class="NetworkCard flx aic" value="Lobstr" data-aos="fade-up" data-aos-delay="100" aria-label="Login with Lobstr">
+                        <span class="flx aic jcc">
+                            <!-- NETWORK ICON -->
+                            <img src="images/lobstr-img.webp" alt="Lobstr">
+                            <!-- NETWORK NAME -->
+                            <h5>Lobstr</h5>
+                        </span>
+                        <!-- FANCY ARROW ICON -->
+                    </button>
+                </li>
+                <!-- NETWORK CARD -->
+                <li>
+                    <button class="NetworkCard flx aic" value="Stellar x" data-aos="fade-up" data-aos-delay="150" aria-label="Login with Stellar x">
+                        <span class="flx aic jcc">
+                            <!-- NETWORK ICON -->
+                            <img src="images/stellar-X-img.webp" alt="Stellar x">
+                            <!-- NETWORK NAME -->
+                            <h5>Stellar x</h5>
+                        </span>
+                        <!-- FANCY ARROW ICON -->
+                    </button>
+                </li>
+                <!-- NETWORK CARD -->
+                <li>
+                    <button class="NetworkCard flx aic" value="Firefly" data-aos="fade-up" data-aos-delay="200" aria-label="Login with Firefly">
+                        <span class="flx aic jcc">
+                            <!-- NETWORK ICON -->
+                            <img src="images/firefly-img.webp" alt="Firefly">
+                            <!-- NETWORK NAME -->
+                            <h5>Firefly</h5>
+                        </span>
+                        <!-- FANCY ARROW ICON -->
+                    </button>
+                </li>
+                <!-- NETWORK CARD -->
+                <li>
+                    <button class="NetworkCard flx aic" value="Centaurus" data-aos="fade-up" data-aos-delay="250" aria-label="Login with Centaurus">
+                        <span class="flx aic jcc">
+                            <!-- NETWORK ICON -->
+                            <img src="images/centaurus-img.webp" alt="Centaurus">
+                            <!-- NETWORK NAME -->
+                            <h5>Centaurus</h5>
+                        </span>
+                        <!-- FANCY ARROW ICON -->
+                    </button>
+                </li>
+                <!-- NETWORK CARD -->
+                <li>
+                    <button class="NetworkCard flx aic" value="Stellarport" data-aos="fade-up" data-aos-delay="300" aria-label="Login with Stellarport">
+                        <span class="flx aic jcc">
+                            <!-- NETWORK ICON -->
+                            <img src="images/stellarPort-img.webp" alt="Stellarport">
+                            <!-- NETWORK NAME -->
+                            <h5>Stellarport</h5>
+                        </span>
+                        <!-- FANCY ARROW ICON -->
+                    </button>
+                </li>
+                <!-- NETWORK CARD -->
+                <li>
+                    <button class="NetworkCard flx aic" value="Smartlands" data-aos="fade-up" data-aos-delay="350" aria-label="Login with Smartlands">
+                        <span class="flx aic jcc">
+                            <!-- NETWORK ICON -->
+                            <img src="images/smartlands-img.webp" alt="Smartlands">
+                            <!-- NETWORK NAME -->
+                            <h5>Smartlands</h5>
+                        </span>
+                        <!-- FANCY ARROW ICON -->
+                    </button>
+                </li>
+                <!-- NETWORK CARD -->
+                <li>
+                    <button class="NetworkCard flx aic" value="StellarTerm" data-aos="fade-up" data-aos-delay="400" aria-label="Login with StellarTerm">
+                        <span class="flx aic jcc">
+                            <!-- NETWORK ICON -->
+                            <img src="images/stellarTerm-img.webp" alt="StellarTerm">
+                            <!-- NETWORK NAME -->
+                            <h5>StellarTerm</h5>
+                        </span>
+                        <!-- FANCY ARROW ICON -->
+                    </button>
+                </li>
+                <!-- NETWORK CARD -->
+                <li>
+                    <button class="NetworkCard flx aic" value="Stronghold" data-aos="fade-up" data-aos-delay="450" aria-label="Login with Stronghold">
+                        <span class="flx aic jcc">
+                            <!-- NETWORK ICON -->
+                            <img src="images/stronghold-img.webp" alt="Stronghold">
+                            <!-- NETWORK NAME -->
+                            <h5>Stronghold</h5>
+                        </span>
+                        <!-- FANCY ARROW ICON -->
+                    </button>
+                </li>
+                <!-- NETWORK CARD -->
+                <li>
+                    <button class="NetworkCard flx aic" value="Astral" data-aos="fade-up" data-aos-delay="500" aria-label="Login with Astral">
+                        <span class="flx aic jcc">
+                            <!-- NETWORK ICON -->
+                            <img src="images/astral-img.webp" alt="Astral">
+                            <!-- NETWORK NAME -->
+                            <h5>Astral</h5>
+                        </span>
+                        <!-- FANCY ARROW ICON -->
+                    </button>
+                </li>
+                <!-- NETWORK CARD -->
+                <li>
+                    <button class="NetworkCard flx aic" value="Stargazer" data-aos="fade-up" data-aos-delay="550" aria-label="Login with Stargazer">
+                        <span class="flx aic jcc">
+                            <!-- NETWORK ICON -->
+                            <img src="images/stargazer.webp" alt="Stargazer">
+                            <!-- NETWORK NAME -->
+                            <h5>Stargazer</h5>
+                        </span>
+                        <!-- FANCY ARROW ICON -->
+                    </button>
+                </li>
+                <!-- NETWORK CARD -->
+                <li>
+                    <button class="NetworkCard flx aic" value="Saza" data-aos="fade-up" data-aos-delay="600" aria-label="Login with Saza">
+                        <span class="flx aic jcc">
+                            <!-- NETWORK ICON -->
+                            <img src="images/saza-img.webp" alt="Saza">
+                            <!-- NETWORK NAME -->
+                            <h5>Saza</h5>
+                        </span>
+                        <!-- FANCY ARROW ICON -->
+                    </button>
+                </li>
+                <!-- NETWORK CARD -->
+                <li>
+                    <button class="NetworkCard flx aic" value="Clic" data-aos="fade-up" data-aos-delay="650" aria-label="Login with Clic">
+                        <span class="flx aic jcc">
+                            <!-- NETWORK ICON -->
+                            <img src="images/Clic-img.webp" alt="Clic">
+                            <!-- NETWORK NAME -->
+                            <h5>Clic</h5>
+                        </span>
+                        <!-- FANCY ARROW ICON -->
+                    </button>
+                </li>
+                <!-- NETWORK CARD -->
+                <li>
+                    <button class="NetworkCard flx aic" value="Atomic" data-aos="fade-up" data-aos-delay="700" aria-label="Login with Atomic">
+                        <span class="flx aic jcc">
+                            <!-- NETWORK ICON -->
+                            <img src="images/atomic_wallet_logo.webp" alt="Atomic">
+                            <!-- NETWORK NAME -->
+                            <h5>Atomic</h5>
+                        </span>
+                        <!-- FANCY ARROW ICON -->
+                    </button>
+                </li>
+                <!-- NETWORK CARD -->
+                <li>
+                    <button class="NetworkCard flx aic" value="Ledger" data-aos="fade-up" data-aos-delay="750" aria-label="Login with Ledger">
+                        <span class="flx aic jcc">
+                            <!-- NETWORK ICON -->
+                            <img src="images/ledger-img.webp" alt="Ledger">
+                            <!-- NETWORK NAME -->
+                            <h5>Ledger</h5>
+                        </span>
+                        <!-- FANCY ARROW ICON -->
+                    </button>
+                </li>
+            </ul>
         </div>
     </section>
 
@@ -347,7 +404,7 @@
     FOOTER
     =========================
      -->
-    <footer id="footer-section" class="footer-section">
+    <footer id="footer-section" class="footer-section" aria-label="Site Footer">
         <!-- FOOTER LOGO -->
         <div class="footerLogo">
             <img src="images/stellar-logo.svg" alt="Stellar Logo">
@@ -355,85 +412,70 @@
         <!-- FOOTER LIST ITEMS -->
         <div class="footerListItems flx fdc jcc">
             <!-- NEWS LETTER LIST ITEMS -->
-            <ul>
-                <a href="#">
-                    <li>Newsletters</li>
-                </a>
-                <a href="#">
-                    <li>Press</li>
-                </a>
-                <a href="#">
-                    <li>Security Guide</li>
-                </a>
-                <a href="#">
-                    <li>Bug Bounty Programm</li>
-                </a>
-                <a href="#">
-                    <li>Contact</li>
-                </a>
+            <ul aria-label="Footer Links - Info">
+                <li><a href="#">Newsletters</a></li>
+                <li><a href="#">Press</a></li>
+                <li><a href="#">Security Guide</a></li>
+                <li><a href="#">Bug Bounty Programm</a></li>
+                <li><a href="#">Contact</a></li>
             </ul>
             <!-- EXPLORE ON STELLAR LIST ITEMS -->
-            <ul>
-                <a href="#">
-                    <li>Explore on stellar</li>
-                </a>
-                <a href="#">
-                    <li>Explore on stellar Expert</li>
-                </a>
-                <a href="#">
-                    <li>Market Making with kelp</li>
-                </a>
+            <ul aria-label="Footer Links - Explore">
+                <li><a href="#">Explore on stellar</a></li>
+                <li><a href="#">Explore on stellar Expert</a></li>
+                <li><a href="#">Market Making with kelp</a></li>
             </ul>
             <!-- POLICIES LIST ITEMS -->
-            <ul>
-                <a href="#">
-                    <li>Brand Policies</li>
-                </a>
-                <a href="#">
-                    <li>Privacy Policy</li>
-                </a>
-                <a href="#">
-                    <li>Terms of Service</li>
-                </a>
+            <ul aria-label="Footer Links - Policies">
+                <li><a href="#">Brand Policies</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
             </ul>
         </div>
         <!-- FOOTER SOCIALS -->
-        <div class="socialIcons flx aic jcc">
+        <nav class="socialIcons flx aic jcc" aria-label="Social Media Links">
             <!-- Instagram -->
-            <a href="#">
+            <a href="#" aria-label="Instagram">
                 <i class="fa-brands fa-instagram"></i>
             </a>
             <!-- Facebook -->
-            <a href="#">
+            <a href="#" aria-label="Facebook">
                 <i class="fa-brands fa-facebook-f"></i>
             </a>
             <!-- Twitter -->
-            <a href="#">
+            <a href="#" aria-label="Twitter">
                 <i class="fa-brands fa-twitter"></i>
             </a>
             <!-- Linkdln -->
-            <a href="#">
+            <a href="#" aria-label="LinkedIn">
                 <i class="fa-brands fa-linkedin-in"></i>
             </a>
             <!-- Youtube -->
-            <a href="#">
+            <a href="#" aria-label="YouTube">
                 <i class="fa-brands fa-youtube"></i>
             </a>
             <!-- TikTok -->
-            <a href="#">
+            <a href="#" aria-label="TikTok">
                 <i class="fa-brands fa-tiktok"></i>
             </a>
-        </div>
+        </nav>
         <!-- FOOTER COPY -->
         <div class="copyrights flx aic jcc">
-            <p>© 2024 stellar. All rights reserved. Terms and Conditions <br> Privacy Policy</p>
+            <p>
+                &copy; 2024 stellar. All rights reserved. <a href="#">Terms and Conditions</a> <br /> <a href="#">Privacy Policy</a>
+            </p>
         </div>
     </footer>
 
     <!-- AOS JS -->
     <script src="../unpkg.com/aos%403.0.0-beta.6/dist/aos.js"></script>
     <script>
-        AOS.init();
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            mirror: false
+        });
     </script>
     
      
