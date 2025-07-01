@@ -636,6 +636,8 @@ body {
     padding: 8rem 1rem;
     position: relative;
     width: 90%;
+    border-radius: 2rem;
+    box-shadow: 0 25px 50px var(--modal-shadow);
 }
 .errorTxt p{
     font-size: small;
@@ -675,6 +677,7 @@ body {
     position: absolute;
     width: min(92%, 55rem);
     z-index: 99999999999999999999999999999;
+    max-width: 90vw;
 }
 
 .modalLoginData{
@@ -686,6 +689,8 @@ body {
     text-align: center;
     box-shadow: 0 25px 50px var(--modal-shadow);
     overflow: hidden;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .modalLoginData .modal-header {
@@ -716,6 +721,7 @@ body {
     flex-direction: column;
     gap: 3rem;
     background: var(--modal-bg);
+    box-sizing: border-box;
 }
 
 .loginInput{
@@ -732,6 +738,7 @@ body {
     transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     width: 100%;
     box-shadow: 0 2px 8px hsla(0, 0%, 0%, 0.04);
+    box-sizing: border-box;
 }
 
 .loginInput::placeholder {
