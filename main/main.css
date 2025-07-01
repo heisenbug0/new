@@ -172,10 +172,9 @@ body {
     display: block;
     padding: 13rem 4rem;
     position: fixed;
-    right: -100vw;
+    right: -100vh;
     top: 0;
     transition: .3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
-    z-index: 1000;
 }
 .navListItems.active{
     right: 0;
@@ -186,9 +185,6 @@ body {
     font-size: smaller;
     gap: 5rem;
     margin-top: 5rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
 }
 .navListItems a.active,
 .navListItems a:hover{
@@ -204,8 +200,7 @@ body {
     position: absolute;
     right: 3rem;
     width: 3rem;
-    z-index: 1001;
-    display: block;
+    z-index: 999999999999999;
 }
 
 .line-harmburger{
@@ -215,8 +210,6 @@ body {
     margin-top: 1rem;
     position: relative;
     transition: .1s cubic-bezier(0.55, 0.085, 0.68, 0.53);
-    width: 100%;
-    display: block;
 }
 .harmburgerBtn.active .line-harmburger{
     background: hsl(0, 0%, 0%);
@@ -225,11 +218,11 @@ body {
 
 .harmburgerBtn.active .firstLine{
     animation: anime 1s forwards;
-    transform: rotate(-45deg);
+    transform: rotate(-50deg);
 }
 .harmburgerBtn.active .lastLine{
     animation: anime2 1s forwards;
-    transform: rotate(45deg);
+    transform: rotate(50deg);
 }
 .harmburgerBtn.active .middleLine{
     opacity: 0;
@@ -247,8 +240,6 @@ body {
     gap: 3rem;
     padding: 0;
     position: inherit;
-    right: 0;
-    flex-direction: row;
 }
 .navListItems a {
     color: hsl(0, 0%, 100%);
@@ -865,83 +856,55 @@ FOOTER STYLES
     width: 100%;
     font-size: smaller;
     padding: 2rem 1rem;
-    background: var(--clr-primary-2);
-    color: var(--clr-secomdary-1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 4rem;
 }
-
 /* LOGO STYLE */
-.footerLogo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 2rem;
-}
-
 .footerLogo img{
     width: 150px;
 }
-
 /* FOOTER LIST ITEMS */
-.footerListItems{
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    align-items: center;
-    margin-bottom: 2rem;
-    width: 100%;
-}
 
 .footerListItems ul{
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    align-items: center;
     width: fit-content;
+}
+.footerListItems{
+    gap: 2rem;
+    padding-top: 3rem;
 }
 
 .footerListItems ul a{
-    color: var(--clr-secomdary-1);
-    font-size: 1.7rem;
-    transition: color 0.2s;
     line-height: 4rem;
 }
-
+ul a{
+    color: var(--clr-secomdary-1);
+    transition: .3s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
 /* List Hover */
-.footerListItems ul a:hover{
-    color: var(--clr-secomdary-Dark);
+ul a:hover{
+    color: var(--clr-secomdary-2);
     opacity: .6;
 }
 
-/* SOCIAL ICONS */
+/* SCOIAL ICONS */
 .socialIcons{
-    display: flex;
-    gap: 2rem;
-    margin-bottom: 2rem;
-    justify-content: center;
-    align-items: center;
+    gap: 3rem;
+    padding: 2rem 0;
+    width: 100%;
 }
-
 .socialIcons a i{
-    font-size: 2.5rem;
-    color: var(--clr-secomdary-1);
-    transition: color 0.2s;
+    color: var(--clr-secomdary-2);
+    font-size: 2.2rem;
+    transition: .4s ease cubic-bezier(0.215, 0.610, 0.355, 1);
 }
-
 .socialIcons a i:hover{
-    color: var(--clr-secomdary-Dark);
+    color: var(--clr-secomdary-1);
 }
 
 /* COPYRIGHT */
 .copyrights{
-    font-size: 1.5rem;
-    color: var(--clr-secomdary-2);
-    text-align: center;
+    font-size: smaller;
     line-height: 2.5rem;
     padding: 3rem 1rem;
+    text-align: center;
 }
 
 /* FOOTER MEDIA QUERY */
@@ -950,37 +913,28 @@ FOOTER STYLES
 /* DESKTOP FOOTER SECTION */
 .footer-section{
     font-size: small;
-    padding: 4rem 2rem 2rem 2rem;
+    padding: 3rem 3rem;
+    width: 90%;
 }
-
 /* DESKTOP LIST ITEMS */
 .footerListItems{
     flex-direction: row;
-    gap: 4rem;
+    gap: 1rem;
     justify-content: space-around;
-    align-items: flex-start;
     padding: 3rem 5rem;
 }
-
-.footerListItems ul{
-    align-items: flex-start;
-}
-
 .footerListItems ul a {
     line-height: 5rem;
 }
-
 /* Social Icons */
 .socialIcons {
     gap: 3rem;
     padding: 2rem 1rem;
 }
-
 .socialIcons a i {
     font-size: 4rem;
 }
 }
-
 /* LARGER Screens */
 @media (width > 1000px){
 /* DESKTOP FOOTER SECTION */
