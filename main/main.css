@@ -210,7 +210,11 @@ body {
     margin-top: 1rem;
     position: relative;
     transition: .1s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+    width: 100%;
+    display: block;
 }
+
+/* CRITICAL FIX: When hamburger is active (menu open), lines should be BLACK for visibility on white background */
 .harmburgerBtn.active .line-harmburger{
     background: hsl(0, 0%, 0%);
     position: absolute;
